@@ -86,12 +86,15 @@ export function ResultCard({ result, onSave, onDiscard }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.header}>
-          <span className={`${styles.categoryBadge} ${styles[categoryClass]}`}>
-            <span className={styles.categoryIcon}>
-              {CATEGORY_ICONS[result.category]}
+          <div>
+            <span className={styles.kicker}>Classification result</span>
+            <span className={`${styles.categoryBadge} ${styles[categoryClass]}`}>
+              <span className={styles.categoryIcon}>
+                {CATEGORY_ICONS[result.category]}
+              </span>
+              {result.category}
             </span>
-            {result.category}
-          </span>
+          </div>
           <button className={styles.closeButton} onClick={onDiscard} aria-label="Close result">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"/>
@@ -102,7 +105,9 @@ export function ResultCard({ result, onSave, onDiscard }) {
 
         <div className={styles.content}>
           <h2 id="result-card-title" className={styles.title}>Organized preview</h2>
+          <span className={styles.sectionLabel}>Summary</span>
           <p id="result-card-summary" className={styles.summary}>{result.summary}</p>
+          <span className={styles.sectionLabel}>Tags</span>
           <div className={styles.tags}>
             {result.tags.map((tag, i) => (
               <span key={i} className={styles.tag}>{tag}</span>
@@ -111,7 +116,10 @@ export function ResultCard({ result, onSave, onDiscard }) {
         </div>
 
         {result.nextAction && (
-          <p className={styles.nextAction}>{result.nextAction}</p>
+          <div className={styles.nextAction}>
+            <span className={styles.sectionLabel}>Suggested next step</span>
+            <p>{result.nextAction}</p>
+          </div>
         )}
 
         <div className={styles.actions}>

@@ -1,44 +1,54 @@
-# MindSpace — AI Notes Organizer
+# MindSpace — Local-first AI Notes Organizer
 
-A warm, intimate digital space for capturing fleeting thoughts and watching them transform into organized, meaningful notes. Think of it as a private study companion — not a productivity tool, but a thinking partner that helps you make sense of what's on your mind.
+MindSpace is a warm, private study-room prototype for capturing raw thoughts and turning them into organized personal notes. It is built as a freelance portfolio demo: simple enough to understand in one screen, polished enough to show product thinking, interaction design, frontend craft, and local-first privacy.
 
-## Features
+## Project Overview
 
-- **Smart Classification**: Write anything on your mind and watch it automatically organize into meaningful categories
-- **7 Life Categories**: Travel, Investment Journal, Inspiration, Tasks/Plans, Reflection, Study/Growth, and Memory
-- **Auto-Generated Summaries**: Each note gets a thoughtful, context-aware summary
-- **Suggested Tags**: Automatic tag suggestions based on content
-- **Search & Filter**: Find notes quickly with full-text search and category filters
-- **Persistent Storage**: All notes saved to localStorage — no backend needed
-- **Responsive Design**: Works beautifully on desktop, tablet, and mobile
-- **Demo Mode**: Quickly populate with sample notes to show the experience
+The app helps someone write whatever is on their mind, classify the thought into a meaningful life category, preview a summary/tags/next action, and save it into a searchable notes wall.
 
-## Categories
+The experience is intentionally calm and consumer-grade rather than corporate. It avoids accounts, dashboards, and heavy workflows so the central product moment stays clear: write one thought, understand it, keep it.
 
-| Category | Color | Examples |
-|----------|-------|----------|
-| Travel | Dusty Teal | trip planning, destinations, adventures |
-| Investment Journal | Olive | savings, portfolio, financial thoughts |
-| Inspiration | Golden | creative ideas, epiphanies, dreams |
-| Tasks / Plans | Muted Lavender | todos, schedules, deadlines |
-| Reflection | Taupe | feelings, mindfulness, gratitude |
-| Study / Growth | Slate Blue | learning, books, skill development |
-| Memory | Warm Stone | nostalgia, family, cherished moments |
+## Key Features
+
+- **Thought classification**: Categorizes notes into Travel, Investment Journal, Inspiration, Tasks / Plans, Reflection, Study / Growth, and Memory.
+- **Organized preview**: Generates a category, summary, tags, and suggested next step before saving.
+- **Search and filtering**: Lets users browse by category or search note content, summaries, and tags.
+- **Demo notes**: Adds portfolio-friendly sample data without replacing existing notes or duplicating entries.
+- **Accessible interactions**: Includes labeled inputs, pressed states, named icon buttons, dialog semantics, Escape-to-close, and reduced-motion support.
+- **Responsive UI**: Designed for desktop, tablet, and mobile with a warm private study-room visual direction.
+
+## Local-first Privacy Note
+
+MindSpace stores notes in the browser's `localStorage`. It does not use a backend, database, login system, or paid API, and note content is not sent to a remote service. Clearing browser storage or switching devices/browsers changes which notes are available.
 
 ## Tech Stack
 
-- React 19 + Vite 8
+- React 19
+- Vite 8
 - Plain CSS with CSS Modules
-- localStorage for persistence
-- No backend, no database, no paid APIs
+- Browser `localStorage`
+- ESLint
 
-## Privacy & local-first behavior
+## Demo Story
 
-MindSpace is local-first. Notes are stored in the browser's `localStorage`, and the app does not send note content to a backend, database, login system, or paid API. Clearing browser storage or using a different browser/device will change what notes are available.
+This is a portfolio prototype for a solo founder, coach, student, or knowledge worker who wants a softer way to make sense of scattered thoughts. In a walkthrough, start with the hero, write a reflective note, show the classification result, save it, then add demo notes to reveal the organized library.
 
-## Demo story
+The project demonstrates product storytelling, accessible UI details, local-first behavior, component composition, responsive styling, and deployment-ready frontend delivery without unnecessary infrastructure.
 
-This project is designed as a freelance portfolio prototype for a calm, consumer-grade AI notes experience. The built-in demo notes can populate the wall quickly for walkthroughs, while still preserving any existing notes and avoiding duplicate demo entries on repeated clicks.
+## Mini Case Study
+
+**Problem:** Personal notes often become a flat pile of text, making it hard to see whether a thought is a task, memory, reflection, idea, or learning moment.
+
+**Approach:** Keep the capture flow lightweight, then add just enough classification and structure to make each note useful. The app preserves user control by previewing the result before save.
+
+**Outcome:** A polished frontend prototype that feels like a calm thinking companion and can be shown publicly without needing accounts, APIs, or sensitive data.
+
+## Suggested Screenshots
+
+- Hero and central note input with the empty library visible below.
+- Classification result card after submitting a thoughtful note.
+- Notes wall populated with demo data and category filters.
+- Mobile view showing the input card and saved notes layout.
 
 ## Getting Started
 
@@ -49,21 +59,17 @@ This project is designed as a freelance portfolio prototype for a calm, consumer
 ### Installation
 
 ```bash
-# Clone or navigate to the project
 cd ai-notes-organizer
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The app will open at `http://localhost:5173`
+The local dev server runs at `http://localhost:5173` by default.
 
-### Build for Production
+## Build For Production
 
 ```bash
+npm run lint
 npm run build
 ```
 
@@ -73,90 +79,51 @@ Preview the production build:
 npm run preview
 ```
 
-## Deploying to Vercel
+## Deployment Instructions
 
-### Option 1: Via Vercel CLI
+### Vercel
 
-```bash
-# Install Vercel CLI globally
-npm install -g vercel
+1. Push this project to a GitHub repository.
+2. Import the repository in Vercel.
+3. Keep the default Vite settings.
+4. Use `npm run build` as the build command.
+5. Use `dist` as the output directory.
 
-# Login to Vercel
-vercel login
+### Drag-and-drop
 
-# Deploy
-vercel
-
-# For production deployment
-vercel --prod
-```
-
-### Option 2: Via GitHub
-
-1. Push this project to a GitHub repository
-2. Go to [vercel.com](https://vercel.com)
-3. Click "New Project"
-4. Import your GitHub repository
-5. Vercel will auto-detect Vite and configure everything
-6. Click "Deploy"
-
-### Option 3: Via Drag & Drop
-
-1. Run `npm run build`
-2. Go to [vercel.com/drop](https://vercel.com/drop)
-3. Drag the `dist` folder directly to the page
+1. Run `npm run build`.
+2. Upload the generated `dist` folder to a static hosting provider that supports Vite builds.
 
 ## Project Structure
 
-```
+```text
 src/
 ├── components/
-│   ├── Header/          # App header with logo
-│   ├── Hero/            # Hero section with tagline
-│   ├── NoteInput/       # Textarea and submit button
-│   ├── ResultCard/      # Classification results modal
-│   ├── NotesWall/       # All notes display with filters
-│   ├── NoteCard/        # Individual note card
-│   ├── CategoryFilter/  # Search and category pills
-│   └── EmptyState/      # Empty/no-results states
+│   ├── CategoryFilter/
+│   ├── EmptyState/
+│   ├── Header/
+│   ├── Hero/
+│   ├── NoteCard/
+│   ├── NoteInput/
+│   ├── NotesWall/
+│   └── ResultCard/
 ├── hooks/
-│   ├── useNotes.js      # Notes state + localStorage sync
-│   └── useClassifier.js # Mock classification hook
-├── utils/
-│   ├── classifier.js    # Keyword-based classifier
-│   ├── storage.js       # localStorage helpers
-│   └── formatters.js    # Date/text utilities
+│   ├── useClassifier.js
+│   └── useNotes.js
 ├── styles/
-│   ├── variables.css    # CSS custom properties
-│   └── global.css       # Reset and base styles
+│   ├── global.css
+│   └── variables.css
+├── utils/
+│   ├── classifier.js
+│   ├── formatters.js
+│   └── storage.js
 ├── App.jsx
 └── main.jsx
 ```
 
-## How the Classifier Works
+## Classifier Notes
 
-The classifier uses keyword matching to categorize notes:
-
-1. Each category has a set of associated keywords
-2. When you submit a note, it counts keyword matches per category
-3. The category with the most matches wins
-4. If no keywords match, it defaults to "Reflection"
-5. Summaries and tags are generated using template-based generation
-
-This is a mock classifier for demo purposes. For production, you would integrate with an AI API like OpenAI's GPT or Anthropic's Claude.
-
-## Future Upgrade Ideas
-
-- **Real AI Classification**: Integrate OpenAI or Claude API for intelligent categorization
-- **Note Editing**: Allow editing of saved notes
-- **Categories**: Add/remove/rename categories
-- **Export/Import**: JSON export for backup
-- **Tags Management**: Custom tag creation
-- **Note Pinning**: Pin important notes
-- **Dark Mode**: Alternative warm dark theme
-- **Multiple Notes**: Submit multiple notes at once
-- **Collaborative Features**: Share notes with friends
-- **Voice Input**: Capture thoughts via speech-to-text
+The current classifier is intentionally frontend-only and keyword/template based. It is suitable for a portfolio prototype because it demonstrates the intended product behavior without requiring a paid API or exposing private note content.
 
 ## License
 

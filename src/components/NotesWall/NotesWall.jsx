@@ -108,9 +108,13 @@ export function NotesWall({ notes, onDelete, onAddDemo }) {
       <div className="container">
         <div className={styles.header}>
           <div className={styles.headerLeft}>
-            <h2 className={styles.title}>Your Notes</h2>
-            <span className={styles.noteCount}>{notes.length} total</span>
+            <span className={styles.eyebrow}>Saved library</span>
+            <h2 className={styles.title}>Your organized notes</h2>
+            <p className={styles.description}>
+              Search across your saved thoughts or browse by the life category MindSpace assigned.
+            </p>
           </div>
+          <span className={styles.noteCount}>{notes.length} notes saved</span>
           <button className={styles.demoButton} onClick={onAddDemo}>
             <svg
               className={styles.demoIcon}
@@ -142,11 +146,16 @@ export function NotesWall({ notes, onDelete, onAddDemo }) {
             {sortedCategories.map((category) => (
               <div key={category} className={styles.categoryGroup}>
                 <h3 className={styles.categoryHeader}>
-                  <span
-                    className={styles.categoryDot}
-                    style={{ backgroundColor: CATEGORY_COLORS[category] }}
-                  />
-                  {category}
+                  <span className={styles.categoryTitle}>
+                    <span
+                      className={styles.categoryDot}
+                      style={{ backgroundColor: CATEGORY_COLORS[category] }}
+                    />
+                    {category}
+                  </span>
+                  <span className={styles.categoryCount}>
+                    {groupedNotes[category].length}
+                  </span>
                 </h3>
                 <div className={styles.categoryNotes}>
                   {groupedNotes[category].map((note, index) => (

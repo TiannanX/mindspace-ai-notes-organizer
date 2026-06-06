@@ -1,6 +1,8 @@
 .section {
   padding: var(--space-12) 0;
   border-top: 1px solid var(--color-border-light);
+  background:
+    linear-gradient(180deg, rgba(250, 247, 242, 0), rgba(255, 255, 255, 0.28));
 }
 
 .header {
@@ -13,19 +15,38 @@
 }
 
 .headerLeft {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
+  max-width: 560px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.description {
+  margin-top: var(--space-2);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
 }
 
 .noteCount {
   font-size: 0.875rem;
   color: var(--color-text-muted);
   font-weight: 400;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
 }
 
 .demoButton {
@@ -76,11 +97,15 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
 .categoryGroup {
   margin-bottom: var(--space-8);
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
 }
 
 .categoryGroup:last-child {
@@ -96,6 +121,13 @@
   margin-bottom: var(--space-4);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.categoryTitle {
+  display: inline-flex;
+  align-items: center;
   gap: var(--space-2);
 }
 
@@ -103,6 +135,15 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
+}
+
+.categoryCount {
+  min-width: 24px;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  text-align: center;
 }
 
 .categoryNotes {

@@ -20,7 +20,7 @@ export function Header() {
           </svg>
           MindSpace
         </div>
-        <span className={styles.tagline}>Your thoughts, beautifully organized</span>
+        <span className={styles.tagline}>Local-first notes for a quieter mind</span>
       </div>
     </header>
   );

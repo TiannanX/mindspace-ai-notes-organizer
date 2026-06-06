@@ -1,5 +1,5 @@
 .hero {
-  padding: var(--space-16) 0 var(--space-12);
+  padding: var(--space-16) 0 var(--space-10);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -21,15 +21,27 @@
 .heroContent {
   position: relative;
   z-index: 1;
-  max-width: 640px;
+  max-width: 760px;
   margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin-bottom: var(--space-3);
+  animation: slideUp 600ms ease-out;
 }
 
 .heroTitle {
-  font-size: 3rem;
+  font-size: 3.35rem;
   font-weight: 600;
   margin-bottom: var(--space-4);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   animation: slideUp 600ms ease-out;
 }
 
@@ -41,7 +53,28 @@
   font-size: 1.125rem;
   color: var(--color-text-secondary);
   line-height: 1.7;
+  max-width: 660px;
+  margin: 0 auto;
   animation: slideUp 600ms ease-out 100ms both;
+}
+
+.highlights {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  animation: slideUp 600ms ease-out 160ms both;
+}
+
+.highlight {
+  padding: var(--space-2) var(--space-4);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 768px) {
@@ -50,7 +83,7 @@
   }
 
   .heroTitle {
-    font-size: 2.25rem;
+    font-size: 2.35rem;
   }
 
   .heroSubtitle {

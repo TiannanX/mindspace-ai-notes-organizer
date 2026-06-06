@@ -1,16 +1,30 @@
 import styles from './Hero.module.css';
 
+const HIGHLIGHTS = [
+  'Local-first notes',
+  'Thought classification',
+  'Personal growth categories',
+];
+
 export function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
+        <p className={styles.eyebrow}>Private AI notes organizer</p>
         <h1 className={styles.heroTitle}>
-          Your thoughts, <span className={styles.heroTitleAccent}>beautifully organized</span>
+          Turn scattered thoughts into a <span className={styles.heroTitleAccent}>quiet personal library</span>
         </h1>
         <p className={styles.heroSubtitle}>
-          Write anything on your mind. Watch it transform into organized insights,
-          neatly sorted into meaningful categories. Your private thinking space.
+          MindSpace helps you capture a raw thought, understand what kind of note it is,
+          and save it into meaningful life categories without accounts, feeds, or clutter.
         </p>
+        <div className={styles.highlights} aria-label="MindSpace highlights">
+          {HIGHLIGHTS.map((highlight) => (
+            <span key={highlight} className={styles.highlight}>
+              {highlight}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

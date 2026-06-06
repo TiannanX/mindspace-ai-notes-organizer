@@ -95,10 +95,10 @@ Template-based with variations for variety.
 
 ### Delete Note
 - Trash icon on each note card
-- Single click delete with animation
+- Two-click confirmation to prevent accidental deletes
 
 ### Demo Data Button
-- Adds 8 pre-written sample notes across different categories
+- Adds missing pre-written sample notes across different categories without replacing existing notes
 
 ## 5. Component Inventory
 
@@ -106,7 +106,7 @@ Template-based with variations for variety.
 
 ## 6. Technical Approach
 
-- React 18 + Vite
+- React 19 + Vite 8
 - CSS Modules
 - localStorage for persistence
 - No external state management

@@ -1,5 +1,5 @@
 .card {
-  background: var(--color-surface);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   box-shadow: var(--shadow-sm);
@@ -97,6 +97,8 @@
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
   line-height: 1.5;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-border-light);
 }
 
 .tags {

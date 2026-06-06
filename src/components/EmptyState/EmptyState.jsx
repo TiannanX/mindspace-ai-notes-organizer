@@ -19,7 +19,7 @@ export function EmptyState({ isSearchEmpty = false }) {
         </svg>
         <h3 className={styles.title}>No thoughts found</h3>
         <p className={styles.description}>
-          No notes match your search. Try different keywords or clear the filters.
+          Nothing in your library matches this view. Try a softer keyword or clear the active filters.
         </p>
       </div>
     );
@@ -43,7 +43,7 @@ export function EmptyState({ isSearchEmpty = false }) {
       </svg>
       <h3 className={styles.title}>Your thoughts await</h3>
       <p className={styles.description}>
-        Start by writing anything on your mind above. Your notes will appear here, organized by category.
+        Start with one honest thought above, or add the demo notes to see how the organized library feels.
       </p>
     </div>
   );
