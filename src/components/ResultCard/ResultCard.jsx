@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from './ResultCard.module.css';
 
 const CATEGORY_ICONS = {
@@ -57,13 +58,33 @@ function getCategoryClass(category) {
 }
 
 export function ResultCard({ result, onSave, onDiscard }) {
+  useEffect(() => {
+    if (!result) return undefined;
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        onDiscard();
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [result, onDiscard]);
+
   if (!result) return null;
 
   const categoryClass = getCategoryClass(result.category);
 
   return (
     <div className={styles.overlay} onClick={onDiscard}>
-      <div className={styles.card} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.card}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="result-card-title"
+        aria-describedby="result-card-summary"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.header}>
           <span className={`${styles.categoryBadge} ${styles[categoryClass]}`}>
             <span className={styles.categoryIcon}>
@@ -71,7 +92,7 @@ export function ResultCard({ result, onSave, onDiscard }) {
             </span>
             {result.category}
           </span>
-          <button className={styles.closeButton} onClick={onDiscard}>
+          <button className={styles.closeButton} onClick={onDiscard} aria-label="Close result">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"/>
               <line x1="6" y1="6" x2="18" y2="18"/>
@@ -80,7 +101,8 @@ export function ResultCard({ result, onSave, onDiscard }) {
         </div>
 
         <div className={styles.content}>
-          <p className={styles.summary}>{result.summary}</p>
+          <h2 id="result-card-title" className={styles.title}>Organized preview</h2>
+          <p id="result-card-summary" className={styles.summary}>{result.summary}</p>
           <div className={styles.tags}>
             {result.tags.map((tag, i) => (
               <span key={i} className={styles.tag}>{tag}</span>

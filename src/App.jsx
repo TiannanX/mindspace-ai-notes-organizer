@@ -68,8 +68,9 @@ const DEMO_NOTES = [
 ];
 
 function App() {
-  const { notes, isLoaded, addNote, deleteNote, clearAllNotes } = useNotes();
+  const { notes, isLoaded, addNote, deleteNote } = useNotes();
   const { result, isProcessing, classify, clearResult } = useClassifier();
+  const [inputContent, setInputContent] = useState('');
   const [pendingContent, setPendingContent] = useState('');
 
   const handleSubmit = useCallback((content) => {
@@ -85,6 +86,7 @@ function App() {
       });
       clearResult();
       setPendingContent('');
+      setInputContent('');
     }
   }, [result, pendingContent, addNote, clearResult]);
 
@@ -94,11 +96,11 @@ function App() {
   }, [clearResult]);
 
   const handleAddDemo = useCallback(() => {
-    clearAllNotes();
-    DEMO_NOTES.forEach((demoNote) => {
+    const existingContent = new Set(notes.map((note) => note.content));
+    DEMO_NOTES.filter((demoNote) => !existingContent.has(demoNote.content)).forEach((demoNote) => {
       addNote(demoNote);
     });
-  }, [addNote, clearAllNotes]);
+  }, [addNote, notes]);
 
   if (!isLoaded) {
     return null;
@@ -109,14 +111,19 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <NoteInput onSubmit={handleSubmit} isProcessing={isProcessing} />
+        <NoteInput
+          content={inputContent}
+          onContentChange={setInputContent}
+          onSubmit={handleSubmit}
+          isProcessing={isProcessing}
+        />
         <NotesWall
           notes={notes}
           onDelete={deleteNote}
           onAddDemo={handleAddDemo}
         />
       </main>
-      <footer style={{ textAlign: 'center', padding: 'var(--space-8) 0', color: 'var(--color-text-muted)', fontSize: '0.875rem' }}>
+      <footer className="app-footer">
         <div className="container">
           MindSpace — Your thoughts, beautifully organized
         </div>

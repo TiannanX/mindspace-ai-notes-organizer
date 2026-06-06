@@ -119,6 +119,13 @@ img {
   padding: 0 var(--space-6);
 }
 
+.app-footer {
+  text-align: center;
+  padding: var(--space-8) 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
 /* Visually hidden */
 .visually-hidden {
   position: absolute;
@@ -204,6 +211,19 @@ img {
 
 .animate-scaleIn {
   animation: scaleIn var(--transition-base) ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }
 
 @media (max-width: 768px) {

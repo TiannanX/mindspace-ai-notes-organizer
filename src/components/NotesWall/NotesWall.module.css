@@ -53,6 +53,26 @@
   height: 14px;
 }
 
+.emptyDemoButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: calc(var(--space-6) * -1) auto var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.emptyDemoButton:hover {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

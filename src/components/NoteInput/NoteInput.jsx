@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import styles from './NoteInput.module.css';
 
-export function NoteInput({ onSubmit, isProcessing }) {
-  const [content, setContent] = useState('');
-
+export function NoteInput({ content, onContentChange, onSubmit, isProcessing }) {
   const handleSubmit = () => {
     if (!content.trim() || isProcessing) return;
     onSubmit(content);
@@ -20,14 +17,15 @@ export function NoteInput({ onSubmit, isProcessing }) {
       <div className={`container ${styles.inputWrapper}`}>
         <div className={styles.inputContainer}>
           <textarea
+            id="note-content"
             className={styles.textarea}
             placeholder=" "
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(e) => onContentChange(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={isProcessing}
           />
-          <label className={styles.label}>Write anything on your mind...</label>
+          <label className={styles.label} htmlFor="note-content">Write anything on your mind...</label>
         </div>
         <button
           className={styles.button}

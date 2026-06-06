@@ -40,18 +40,24 @@
 }
 
 .deleteButton {
-  width: 28px;
+  min-width: 28px;
   height: 28px;
+  padding: 0 var(--space-2);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-1);
   color: var(--color-text-muted);
   opacity: 0;
   transition: all var(--transition-fast);
 }
 
 .card:hover .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:focus-visible {
   opacity: 1;
 }
 
@@ -64,6 +70,12 @@
   opacity: 1 !important;
   background: var(--color-error);
   color: white;
+}
+
+.deleteText {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .content {

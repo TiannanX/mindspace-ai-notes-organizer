@@ -27,10 +27,18 @@ A warm, intimate digital space for capturing fleeting thoughts and watching them
 
 ## Tech Stack
 
-- React 18 + Vite
+- React 19 + Vite 8
 - Plain CSS with CSS Modules
 - localStorage for persistence
 - No backend, no database, no paid APIs
+
+## Privacy & local-first behavior
+
+MindSpace is local-first. Notes are stored in the browser's `localStorage`, and the app does not send note content to a backend, database, login system, or paid API. Clearing browser storage or using a different browser/device will change what notes are available.
+
+## Demo story
+
+This project is designed as a freelance portfolio prototype for a calm, consumer-grade AI notes experience. The built-in demo notes can populate the wall quickly for walkthroughs, while still preserving any existing notes and avoiding duplicate demo entries on repeated clicks.
 
 ## Getting Started
 

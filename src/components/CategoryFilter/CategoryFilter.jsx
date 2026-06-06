@@ -45,6 +45,7 @@ export function CategoryFilter({ search, onSearchChange, selectedCategories, onC
           type="text"
           className={styles.searchInput}
           placeholder="Search your thoughts..."
+          aria-label="Search notes"
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
         />
@@ -59,6 +60,7 @@ export function CategoryFilter({ search, onSearchChange, selectedCategories, onC
               key={category}
               className={`${styles.categoryPill} ${styles[categoryClass]} ${isActive ? styles.categoryPillActive : ''}`}
               onClick={() => onCategoryToggle(category)}
+              aria-pressed={isActive}
             >
               {category}
             </button>

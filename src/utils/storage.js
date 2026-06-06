@@ -2,6 +2,7 @@ const STORAGE_KEY = 'ai-notes-organizer';
 
 export function loadNotes() {
   try {
+    if (typeof localStorage === 'undefined') return [];
     const data = localStorage.getItem(STORAGE_KEY);
     if (!data) return [];
     const parsed = JSON.parse(data);
@@ -14,20 +15,11 @@ export function loadNotes() {
 
 export function saveNotes(notes) {
   try {
+    if (typeof localStorage === 'undefined') return false;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
     return true;
   } catch (error) {
     console.warn('Failed to save notes to localStorage:', error);
-    return false;
-  }
-}
-
-export function clearAllNotes() {
-  try {
-    localStorage.removeItem(STORAGE_KEY);
-    return true;
-  } catch (error) {
-    console.warn('Failed to clear notes from localStorage:', error);
     return false;
   }
 }
